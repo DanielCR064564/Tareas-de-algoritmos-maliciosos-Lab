@@ -1,29 +1,28 @@
 #include <stdio.h>
-int j = 100;  // Valor global de j cambiado
+int j = 100;  
 void func3() 
 {
-   int i = 15, j = 888;  // Nuevos valores para las variables locales
    printf("\t\t\t[in func3] i = %d, j = %d\n", i, j);
 }
 void func2() 
 {
-   int i = 10;  // Valor local de i cambiado
+   int i = 10;  
    printf("\t\t[in func2] i = %d, j = %d\n", i, j);
    printf("\t\t[in func2] setting j = 2000\n");
-   j = 2000;  // Cambiar el valor global de j
+   j = 2000; 
    func3();
    printf("\t\t[back in func2] i = %d, j = %d\n", i, j);
 }
 void func1() 
 {
-   int i = 20;  // Valor local de i cambiado
+   int i = 20;  
    printf("\t[in func1] i = %d, j = %d\n", i, j);
    func2();
    printf("\t[back in func1] i = %d, j = %d\n", i, j);
 }
 int main() 
 {
-   int i = 30;  // Valor local de i cambiado
+   int i = 30;  
    printf("[in main] i = %d, j = %d\n", i, j);
    func1();
    printf("[back in main] i = %d, j = %d\n", i, j);
