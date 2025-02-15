@@ -1,22 +1,22 @@
 #include <stdio.h>
-int j = 58;  // Valor global de j cambiado
+int j = 58; 
 void func3() {
-   int i = 22, j = 555;  // Nuevos valores para las variables locales
+   int i = 22, j = 555;  
    printf("\t\t\t[in func3] i @ 0x%08x = %d\n", &i, i);
    printf("\t\t\t[in func3] j @ 0x%08x = %d\n", &j, j);
 }
 void func2() {
-   int i = 14;  // Nuevo valor para la variable i
+   int i = 14;  
    printf("\t\t[in func2] i @ 0x%08x = %d\n", &i, i);
    printf("\t\t[in func2] j @ 0x%08x = %d\n", &j, j);
    printf("\t\t[in func2] setting j = 4500\n");
-   j = 4500;  // Cambiar el valor global de j
+   j = 4500;  
    func3();
    printf("\t\t[back in func2] i @ 0x%08x = %d\n", &i, i);
    printf("\t\t[back in func2] j @ 0x%08x = %d\n", &j, j);
 }
 void func1() {
-   int i = 9;  // Nuevo valor para la variable i
+   int i = 9;  
    printf("\t[in func1] i @ 0x%08x = %d\n", &i, i);
    printf("\t[in func1] j @ 0x%08x = %d\n", &j, j);
    func2();
@@ -24,7 +24,7 @@ void func1() {
    printf("\t[back in func1] j @ 0x%08x = %d\n", &j, j);
 }
 int main() {
-   int i = 17;  // Nuevo valor para la variable i
+   int i = 17;  
    printf("[in main] i @ 0x%08x = %d\n", &i, i);
    printf("[in main] j @ 0x%08x = %d\n", &j, j);
    func1();
