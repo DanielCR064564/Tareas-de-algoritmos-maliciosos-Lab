@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int main() {
+    int i, bit_x, bit_y;
+
+    printf("bitwise OR operator  |\n");
+    for(i = 0; i < 4; i++) {
+        bit_x = (i & 2) >> 1;  // Obtiene el segundo bit
+        bit_y = (i & 1);       // Obtiene el primer bit
+        
+        printf("%d | %d = %d\n", bit_x, bit_y, bit_x | bit_y);
+    }
+
+    printf("\nbitwise AND operator  &\n");
+    for(i = 0; i < 4; i++) {
+        bit_x = (i & 2) >> 1;  // Obtiene el segundo bit
+        bit_y = (i & 1);       // Obtiene el primer bit
+        
+        printf("%d & %d = %d\n", bit_x, bit_y, bit_x & bit_y);
+    }
+    
+    return 0;
+}
