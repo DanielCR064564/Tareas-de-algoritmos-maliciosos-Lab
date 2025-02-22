@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void fatal(char *message);
+void *ec_malloc(unsigned int);
+
+void fatal(char *message) {
+    char error_message[150];
+    strcpy(error_message, "[!!] Severe Error: ");
+    strncat(error_message, message, 130);
+    perror(error_message);
+    exit(-1);
+}
+
+void *ec_malloc(unsigned int size) {
+    void *ptr;
+    ptr = malloc(size);
+    if(ptr == NULL)
+        fatal("in ec_malloc() during memory allocation");
+    return ptr;
+}
+
+int main(int argc, char *argv[]) {
+    char *char_ptr;
+    int *int_ptr;
+    int mem_size;
+    if (argc < 2)
+        mem_size = 100;
+    else
+        mem_size = atoi(argv[1]);
+    
+    printf("\t[+] Allocating %d bytes of memory on the heap for char_ptr\n", mem_size);
+    char_ptr = (char *) ec_malloc(mem_size);
+    strcpy(char_ptr, "Heap allocation successful.");
+    printf("char_ptr (%p) --> '%s'\n", char_ptr, char_ptr);
+    
+    printf("\t[+] Allocating 24 bytes of memory on the heap for int_ptr\n");
+    int_ptr = (int *) ec_malloc(24);
+    *int_ptr = 654321;
+    printf("int_ptr (%p) --> %d\n", int_ptr, *int_ptr);
+    
+    printf("\t[-] Freeing char_ptr's heap memory...\n");
+    free(char_ptr);
+    
+    printf("\t[+] Allocating another 30 bytes for char_ptr\n");
+    char_ptr = (char *) ec_malloc(30);
+    strcpy(char_ptr, "Updated heap memory");
+    printf("char_ptr (%p) --> '%s'\n", char_ptr, char_ptr);
+    
+    printf("\t[-] Freeing int_ptr's heap memory...\n");
+    free(int_ptr);
+    
+    printf("\t[-] Freeing char_ptr's heap memory...\n");
+    free(char_ptr);
+}
