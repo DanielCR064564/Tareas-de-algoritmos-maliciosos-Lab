@@ -1,0 +1,7 @@
+#include <stdio.h>
+#include <unistd.h>
+
+int main() {
+    printf("real uid: %d\n", getgid());
+    printf("effective uid: %d\n", getegid());
+}
