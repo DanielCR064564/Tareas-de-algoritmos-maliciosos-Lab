@@ -1,8 +1,15 @@
 section .data
+msg db "Hello World", 0Ah, 0  
 lf db 0Ah, 0  
 
 section .text
 global _start
+
+_start:
+    mov eax, msg
+    call sprint
+    call sprintLF
+    call quit
 
 slen:
     push    ebx
@@ -40,9 +47,8 @@ sprint:
     ret
 
 sprintLF:
-    call    sprint
-    mov     eax, lf
-    call    sprint
+    mov eax, lf
+    call sprint
     ret
 
 quit:
