@@ -6,11 +6,11 @@ global  _start
 nextNumber:
     inc     ecx 
     mov     eax, ecx
-    add     eax, 56  
+    add     eax, 48 
     push    eax 
     mov     eax, esp
     call    sprintLF
     pop     eax
-    cmp     ecx, 20
+    cmp     ecx, 10
     jne     nextNumbe
     call    quit
