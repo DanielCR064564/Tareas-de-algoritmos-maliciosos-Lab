@@ -22,7 +22,7 @@ finished:
     mov     edx, eax
     mov     ecx, msg
     mov     ebx, 1
-    mov     eax, 6
+    mov     eax, 4
     int     80h
  
     mov     ebx, 0
